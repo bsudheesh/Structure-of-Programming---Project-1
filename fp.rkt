@@ -1,10 +1,10 @@
 ;Question 1
 
-(defvar l1 ())
- (define (reverse-general L)
-   (define (reverse-general-helper-function (l1, L)
-                                            (COND
-                                             ((NULL? l) l1)
-                                             (Else (reverse-general-helper-function (l1.append(car(l), cdr (l)))))))))
- 
-(reverse-general '(1 2 (3 4)))
+(define (reverse-general L)
+  (cond
+     ((Null? l) l)
+     (else (append (reverse-general (cdr l)) (list car L)))))
+   
+       
+(reverse-general '(a b (c (d e)) f))
+  
