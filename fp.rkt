@@ -3,8 +3,12 @@
 (define (reverse-general L)
   (cond
      ((Null? l) l)
+     ((list? (car l)) (append (reverse-general (cdr l)) (list (reverse-general (car l)))))
      (else (append (reverse-general (cdr l)) (list (car L))))))
+
+
+
    
        
-(reverse-general '(a b (c (d e)) f))
+(reverse-general '(1 (2 3) (4 (a (b (c d))))) )
   
