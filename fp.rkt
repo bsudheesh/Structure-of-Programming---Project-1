@@ -26,9 +26,8 @@
 (define  (sum-up-numbers-general L)
   (cond
     ((NULL? L) 0)
-    (list? sum-up-numbers-general (list (cdr L)))
-    (number? (car L) (+ (car L) (recursive-sum (cdr L))))
-    (else (sum-up-numbers-general (list (cdr L))))))
+    (number? (car L) (+ (car L) (sum-up-numbers-general (cdr L))))
+    (else 0)))
 
 (sum-up-numbers-general '(1 2 3))
   
