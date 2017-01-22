@@ -26,9 +26,9 @@
 (define  (sum-up-numbers-general L)
   (cond
     ((NULL? L) 0)
-    (number? (car L) (+ (car L) (sum-up-numbers-general (cdr L))))
-    (else 0)))
+    ((integer? (car L)) (+ (car L) (sum-up-numbers-general (cdr L))))
+    (else (sum-up-numbers-general (cdr L)))))
 
-(sum-up-numbers-general '(1 2 3))
+(sum-up-numbers-general '(1 2 a b 3))
   
   
