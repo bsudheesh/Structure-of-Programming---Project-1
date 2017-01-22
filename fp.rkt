@@ -24,9 +24,9 @@
 
 (define  (sum-up-numbers-general L)
   (cond
-    ((NULL? L) 0)
-    ((integer? (car L)) (+ (car L) (sum-up-numbers-general (cdr L))))
-    (else (sum-up-numbers-general (cdr L)))))
+    ((NULL? L) 0) ;checking if the list is NULL
+    ((integer? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))) ;checking if the first element is integer
+    (else (sum-up-numbers-general (cdr L))))) ;if not null or not an integer, remove the first element and call function
 
 (sum-up-numbers-general '(a 100 b (200) c 300 d) )
   
