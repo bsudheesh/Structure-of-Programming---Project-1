@@ -10,11 +10,9 @@
      ((list? (car l)) (append (reverse-general (cdr l)) (list (reverse-general (car l))))) ;if it's list, we append the first element by making a recursive call for the atom and call the function with the first element popped
      (else (append (reverse-general (cdr l)) (list (car L)))))) ;if an atom, we append the first element and call the function with the first element popped
 
-
-
-   
-       
 (reverse-general '(a b c))
+
+
 
 ;Question 2
 ;The idead is to check if the first element of the list is an interger.
