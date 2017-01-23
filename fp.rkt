@@ -20,12 +20,26 @@
 ;If it is an Interger, we perform an addition of the first element and recursively call the function by popping the first element.
 ;Else we recursively call the function by popping the first element of the list
 
+(define  (sum-up-numbers-simple L)
+  (cond
+    ((NULL? L) 0) ;checking if the list is NULL
+    ((integer? (car L)) (+ (car L) (sum-up-numbers-simple (cdr L)))) ;checking if the first element is integer
+    (else (sum-up-numbers-simple (cdr L))))) ;if not null or not an integer, remove the first element and call function
+
+(sum-up-numbers-simple '(a 100 b (200) c 300 d) )
+  
+
+;Question 3
+;Write a function (sum-up-numbers-general L). L is a list, which may contain
+;as elements numbers and non-numbers. The result of the function is the sum of all the numbers
+;(including those in nested lists) in L. If there are no such numbers, the result is zero. For
+;example, the result of (sum-up-numbers-general ‘(a b 1 (2 c (3)) d))
+;should be 6.
+
 (define  (sum-up-numbers-general L)
   (cond
     ((NULL? L) 0) ;checking if the list is NULL
     ((integer? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))) ;checking if the first element is integer
     (else (sum-up-numbers-general (cdr L))))) ;if not null or not an integer, remove the first element and call function
 
-(sum-up-numbers-general '(a 100 b (200) c 300 d) )
-  
-  
+(sum-up-numbers-general '(a 1 b (200) c 300 d) )
