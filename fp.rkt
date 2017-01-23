@@ -38,8 +38,9 @@
 
 (define  (sum-up-numbers-general L)
   (cond
-    ((NULL? L) 0) ;checking if the list is NULL
-    ((integer? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))) ;checking if the first element is integer
-    (else (sum-up-numbers-general (cdr L))))) ;if not null or not an integer, remove the first element and call function
+    ((NULL? L) 0)
+    ((list? (car L)) (+ sum-up-numbers-general (cdr L)) (+ sum-up-numbers-general (car L)))
+    ((integer? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))) 
+    (else (sum-up-numbers-general (cdr L)))))
 
 (sum-up-numbers-general '(a 1 b (200) c 300 d) )
