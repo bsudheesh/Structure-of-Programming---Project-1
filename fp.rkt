@@ -39,8 +39,8 @@
 (define  (sum-up-numbers-general L)
   (cond
     ((NULL? L) 0)
-    ((list? (car L)) (+ sum-up-numbers-general (cdr L)) (+ sum-up-numbers-general (car L)))
+    ((list? (car L)) (sum-up-numbers-general (cdr L)) (sum-up-numbers-general (car L)))
     ((integer? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))) 
     (else (sum-up-numbers-general (cdr L)))))
 
-(sum-up-numbers-general '(a 1 b (200) c 300 d) )
+(sum-up-numbers-general '(a 1 900 b (200 300) c 300 d) )
