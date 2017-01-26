@@ -59,23 +59,12 @@
 (define (min-helper-function L)
   (cond
     ((NULL? L) 0)
-    ((number? (car l))
-     (cond
-       ((< (car l) (min-helper-function (cdr l))) (car L) )
-     (else (min-helper-function (cdr l)))
-     ))
-     (else (min-helper-function(cdr l)))
-     
-    
-  ))
+    ((number? (car L))
+     (if (number? (min-helper-function (cdr L)))
+         (if (< (car L) (min-helper-function (cdr L)))
+             (car L)
+             (min-helper-function (cdr L)))
+         (car L)))
+    (else (min-helper-function (cdr L)))))
 
-
-
-  
-    
-
-
-
-
-    
-  
+(min-helper-function '(1 a -1 -2 b c 2 3 -10 4))
