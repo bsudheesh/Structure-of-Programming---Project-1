@@ -25,10 +25,10 @@
 (define  (sum-up-numbers-simple L)
   (cond
     ((NULL? L) 0) ;checking if the list is NULL
-    ((integer? (car L)) (+ (car L) (sum-up-numbers-simple (cdr L)))) ;checking if the first element is integer
+    ((number? (car L)) (+ (car L) (sum-up-numbers-simple (cdr L)))) ;checking if the first element is integer
     (else (sum-up-numbers-simple (cdr L))))) ;if not null or not an integer, remove the first element and call function
 
-(sum-up-numbers-simple '(a 100 b (200) c 300 d) )
+(sum-up-numbers-simple '(a 100 b 200 c 300 d) )
   
 
 ;Question 3
@@ -43,7 +43,39 @@
   (cond
     ((NULL? L) 0) ;check if list is NULL.
     ((list? (car L)) (+(sum-up-numbers-general (cdr L))  (sum-up-numbers-general  (car L)))) ;check for list.
-    ((integer? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))) ;check for number
+    ((number? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))) ;check for number
     (else (sum-up-numbers-general (cdr L))))) ;else call the function again
 
-(sum-up-numbers-general '(a (100 200) 300 (400 500)))
+(sum-up-numbers-general '(a (100 200) (600) 300 (400 500)))
+
+;Question 4
+; Write a function (min-above-min L1 L2). L1 and L2 are both simple lists,
+;which do not contain nested lists. Both lists may have non-numeric elements. The result of the
+;function is the minimum of the numbers in L1 that are larger than the smallest number in L2.
+;If there is no number in L2, all the numbers in L1 should be used to calculate the minimum. If
+;there is no number in L1 larger than the smallest number in L2, the result is false (#F). For
+;example, the result of (min-above-min ‘(2 a 1 3) ‘(b 5 3 1)) should be 2.
+
+(define (min-helper-function L)
+  (cond
+    ((NULL? L) 0)
+    ((number? (car l))
+     (cond
+       ((< (car l) (min-helper-function (cdr l))) (car L) )
+     (else (min-helper-function (cdr l)))
+     ))
+     (else (min-helper-function(cdr l)))
+     
+    
+  ))
+
+
+
+  
+    
+
+
+
+
+    
+  
