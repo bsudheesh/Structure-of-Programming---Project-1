@@ -113,6 +113,7 @@
      (cond
        (not (number? (min-above-min-helper-clasee (cdr L1) l2))
             (car L1))
+       ((< (car L1) (min-above-min-helper-clasee (cdr L1) L2)))
        (else (min-above-min-helper-clasee (cdr L1) L2))))
     (else (min-above-min-helper-clasee (cdr L1) L2))))
       
@@ -132,7 +133,7 @@
 
 
 
-(min-above-min '(a 300 b 100 c d) '(a b 100 c))
+(min-above-min '(a 300 b 100 c 200 d) '(a 200 b 300 c 100 d))
 
 
 
