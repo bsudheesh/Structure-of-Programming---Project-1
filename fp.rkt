@@ -11,7 +11,7 @@
      ((list? (car l)) (append (reverse-general (cdr l)) (list (reverse-general (car l))))) ;if it's list, we append the first element by making a recursive call for the atom and call the function with the first element popped
      (else (append (reverse-general (cdr l)) (list (car L)))))) ;if an atom, we append the first element and call the function with the first element popped
 
-(reverse-general '(a b c))
+;(reverse-general '(a b c))
 
 
 
@@ -28,7 +28,7 @@
     ((number? (car L)) (+ (car L) (sum-up-numbers-simple (cdr L)))) ;checking if the first element is integer
     (else (sum-up-numbers-simple (cdr L))))) ;if not null or not an integer, remove the first element and call function
 
-(sum-up-numbers-simple '(a 100 b 200 c 300 d) )
+;(sum-up-numbers-simple '(a 100 b 200 c 300 d) )
   
 
 ;Question 3
@@ -46,7 +46,7 @@
     ((number? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))) ;check for number
     (else (sum-up-numbers-general (cdr L))))) ;else call the function again
 
-(sum-up-numbers-general '(a (100 200) (600) 300 (400 500)))
+;(sum-up-numbers-general '(a (100 200) (600) 300 (400 500)))
 
 ;Question 4
 ;Logic
@@ -131,7 +131,7 @@
       
     
                 
-(min-above-min '(a 300 b 100 c 200 d) '(a 200 b 300 c 100 d))
+;(min-above-min '(a 300 b 100 c 200 d) '(a 200 b 300 c 100 d))
 
 
 
