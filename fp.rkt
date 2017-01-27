@@ -99,20 +99,19 @@
     ))
 
 (define (is-greater m n)
-  
-  (if (> m n)
-      #t
+  (if (number? m)
+      (> m n)
       #f))
 
 (define (min-above-min-helper-clasee L1 L2)
   
   (cond
-    ((NULL? (cdr L1)) (is_greater (car L1) (find-min-function L2)))
+    ((NULL? (cdr L1)) (is-greater (car L1) (min-helper-function L2)))
 
     ((is-greater (car L1) (min-helper-function L2))
      
      (cond
-       (not (number? (min-helper-function (cdr L1) l2))
+       (not (number? (min-above-min-helper-clasee (cdr L1) l2))
             (car L1))
        (else (min-above-min-helper-clasee (cdr L1) L2))))
     (else (min-above-min-helper-clasee (cdr L1) L2))))
