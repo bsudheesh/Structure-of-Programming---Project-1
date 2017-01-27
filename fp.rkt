@@ -70,10 +70,13 @@
          (car L)))
     (else (min-helper-function (cdr L)))))
 
+
 (define (min-above-min L1 L2)
-    (if (not(number? (min-helper-function (L2))))
-        (min-helper-function (L1))
-        (min-above-min (cdr L1) (cdr L2))))
+    (if (not(number? (min-helper-function L2)))
+          (min-helper-function L1)
+        (min-above-min (cdr L1) (cdr L2)))
+  )
 
 
-(min-helper-function '(min-above-min ‘(2 a 1 3) ‘(a b c)))
+
+(min-above-min '(20 a 100 30) '(a b c))
