@@ -49,91 +49,89 @@
 (sum-up-numbers-general '(a (100 200) (600) 300 (400 500)))
 
 ;Question 4
-; Write a function (min-above-min L1 L2). L1 and L2 are both simple lists,
-;which do not contain nested lists. Both lists may have non-numeric elements. The result of the
-;function is the minimum of the numbers in L1 that are larger than the smallest number in L2.
-;If there is no number in L2, all the numbers in L1 should be used to calculate the minimum. If
-;there is no number in L1 larger than the smallest number in L2, the result is false (#F). For
-;example, the result of (min-above-min ‘(2 a 1 3) ‘(b 5 3 1)) should be 2.
+;Logic
+;The idea here is to create a min-function that will find the minimum of a list. We get the minimum of the list and perfom following operations
+; There is a min-function that returns the minimum of a list, if no minimum returns false.
+; Is greater function that returns true if a > b, else false for any case.
+; min-above-min function that returns value for the edge cases.
+; min-above-min-helper-clasee that returns the minimum of the values that are maximum than L2.
 
 
 
-     
+
+;This function returns the minimum from a List. If no number, returns false;     
 (define (min-helper-function L)
   (cond
-    ((NULL? L) #f)
-    ((number? (car L))
-     (if (number? (min-helper-function (cdr L)))
-         (if (< (car L) (min-helper-function (cdr L)))
+    ((NULL? L) #f) ;check if the list is null, return false
+    ((number? (car L)) ;if the first element is number
+     (if (number? (min-helper-function (cdr L))) ;if we get a number at the end of the function
+         (if (< (car L) (min-helper-function (cdr L))) ;if car L is less than the rest of the function, return car L, or else remove it and call the function recursively
              (car L)
              (min-helper-function (cdr L)))
-         (car L)))
-    (else (min-helper-function (cdr L)))))
+         (car L))) ;return car L
+    (else (min-helper-function (cdr L))))) ;if not number, remove it and call the function again
 
 
 
 
 
-
+;This function is used to handle edge cases which include.
+; 1) If L1 is null or L2 is null.
+; 2) No number in L2.
+; 3) Number in L2, but no number in L1
 (define (min-above-min L1 L2)
   (cond
-    ((NULL? L1) #f)
-    ((NULL? L2) (min-helper-function L1))
+    ((NULL? L1) #f) ;if L1 is null, return false
+    ((NULL? L2) (min-helper-function L1)) ;if L2 is null, return the minimum of L1
     (
-     (not (min-helper-function L2))
+     (not (min-helper-function L2)) ;if there is no number in L2, check following
      
         (cond
-          ((number? (min-helper-function L1)) (min-helper-function L1)) 
+          ((number? (min-helper-function L1)) (min-helper-function L1)) ;If there is number in L1, return the minimum of L1
            
-           (else #f)
+           (else #f) ;else return false
            )
         )
-    (else
-     (if (number? (min-helper-function L1))
-        ( min-above-min-helper-clasee L1 L2)
-        #f
+    (else ;if there is number in L2
+     (if (number? (min-helper-function L1)) ;If there is number in L1, do the following
+        ( min-above-min-helper-clasee L1 L2) ;If yes, this function returns the min of max of numbers greater than min of L2.
+        #f; If no number in L2, return false
         ))
          
        
        
     ))
 
+;This function checks if a number if greater than the other.
+;If yes, return true, else false;
 (define (is-greater m n)
   (if (number? m)
       (> m n)
       #f))
 
+;This function is used to return the minimum of the maximum number in L1.
 (define (min-above-min-helper-clasee L1 L2)
   
   (cond
-    ((NULL? (cdr L1)) (is-greater (car L1) (min-helper-function L2)))
-
-    ((is-greater (car L1) (min-helper-function L2))
+    ((NULL? L1) #F) ;If the list L1 is null, return false
+    ((NULL? (cdr L1)) ;If there is only one element in L1, check if the last number is greater than min of L2
+     (if (is-greater (car L1) (min-helper-function L2)) ;if the number is greater than min of L2 return the number, else false
+         (car L1)
+         #f))
+    
+    ((is-greater (car L1) (min-helper-function L2)) ;If the first element of car L1 is greater than L2, do the following
      
      (cond
        (not (number? (min-above-min-helper-clasee (cdr L1) l2))
             (car L1))
-       ((< (car L1) (min-above-min-helper-clasee (cdr L1) L2)))
+       ((< (car L1) (min-above-min-helper-clasee (cdr L1) L2)) (car L1))
        (else (min-above-min-helper-clasee (cdr L1) L2))))
-    (else (min-above-min-helper-clasee (cdr L1) L2))))
+    
+    (else (min-above-min-helper-clasee (cdr L1) L2)))) ;if the first element of l1 is not greater than L2, remove the number and recursively call function again.
       
     
                 
-
-                     
-                     
-              
-        
-    
-        
-        
-            
-             
-       
-
-
-
-(min-above-min '(a 300 b 100 c 200 d) '(a 200 b 300 c 100 d))
+(min-above-min '(a 400 b 200 c 300) '(a 200 b c 100 d))
 
 
 
