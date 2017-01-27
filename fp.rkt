@@ -118,20 +118,20 @@
      (if (is-greater (car L1) (min-helper-function L2)) ;if the number is greater than min of L2 return the number, else false
          (car L1)
          #f))
-    
+
     ((is-greater (car L1) (min-helper-function L2)) ;If the first element of car L1 is greater than L2, do the following
      
-     (cond
-       (not (number? (min-above-min-helper-clasee (cdr L1) l2))
-            (car L1))
-       ((< (car L1) (min-above-min-helper-clasee (cdr L1) L2)) (car L1))
-       (else (min-above-min-helper-clasee (cdr L1) L2))))
+      (cond
+        (not (number? (min-above-min-helper-clasee (cdr L1) l2)) ;if the remaining items in L1 doesn't have any numbers,
+             (car L1)) ;return the first element of L1.
+        ((< (car L1) (min-above-min-helper-clasee (cdr L1) L2)) (car L1)) ;if the the first element is less than the other values of L1, return L1
+        (else (min-above-min-helper-clasee (cdr L1) L2)))) ; else remove the first number and call the function recursively.
     
     (else (min-above-min-helper-clasee (cdr L1) L2)))) ;if the first element of l1 is not greater than L2, remove the number and recursively call function again.
       
     
                 
-(min-above-min '(a 400 b 200 c 300) '(a 200 b c 100 d))
+(min-above-min '(a 300 b 100 c 200 d) '(a 200 b 300 c 100 d))
 
 
 
