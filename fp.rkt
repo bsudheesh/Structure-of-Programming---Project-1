@@ -89,23 +89,37 @@
            )
         )
     (else
-     (if (not (min-helper-function L1))
-         #f
-        ( min-above-min-helper-clasee L1 L2)))
+     (if (number? (min-helper-function L1))
+        ( min-above-min-helper-clasee L1 L2)
+        #f
+        ))
          
        
        
     ))
 
+(define (is-greater m n)
+  
+  (if (> m n)
+      #t
+      #f))
+
 (define (min-above-min-helper-clasee L1 L2)
+  
   (cond
-    ((number? (car L1))
-                 (if (min-helper-function l2)
-                     (if (< (car L1) (min-helper-function l2))
-                         (if (not(min-helper-function (cdr L)))
-                             (car L)
-                             (< (car L1) (min-above-min-helper-clasee (cdr L1) (L2))))
-                         (min-above-min-helper-clasee (cdr L1) L2))))))
+    ((NULL? (cdr L1)) (is_greater (car L1) (find-min-function L2)))
+
+    ((is-greater (car L1) (min-helper-function L2))
+     
+     (cond
+       (not (number? (min-helper-function (cdr L1) l2))
+            (car L1))
+       (else (min-above-min-helper-clasee (cdr L1) L2))))
+    (else (min-above-min-helper-clasee (cdr L1) L2))))
+      
+    
+                
+
                      
                      
               
@@ -119,7 +133,7 @@
 
 
 
-(min-above-min '(a 300 b 100 c 200 d) '(a b c))
+(min-above-min '(a 300 b 100 c d) '(a b 100 c))
 
 
 
