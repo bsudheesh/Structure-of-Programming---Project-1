@@ -56,9 +56,12 @@
 ;there is no number in L1 larger than the smallest number in L2, the result is false (#F). For
 ;example, the result of (min-above-min ‘(2 a 1 3) ‘(b 5 3 1)) should be 2.
 
+
+
+     
 (define (min-helper-function L)
   (cond
-    ((NULL? L) 0)
+    ((NULL? L) L)
     ((number? (car L))
      (if (number? (min-helper-function (cdr L)))
          (if (< (car L) (min-helper-function (cdr L)))
@@ -67,4 +70,10 @@
          (car L)))
     (else (min-helper-function (cdr L)))))
 
-(min-helper-function '(1 a -1 -2 b c 2 3 -10 4))
+(define (min-above-min L1 L2)
+    (if (not(number? (min-helper-function (L2))))
+        (min-helper-function (L1))
+        (min-above-min (cdr L1) (cdr L2))))
+
+
+(min-helper-function '(min-above-min ‘(2 a 1 3) ‘(a b c)))
