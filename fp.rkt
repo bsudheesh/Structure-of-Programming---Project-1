@@ -74,15 +74,16 @@
 
 
 
+
 (define (min-above-min L1 L2)
   (cond
+    ((NULL? L1) #f)
+    ((NULL? L2) (min-helper-function L1))
     (not(number? (min-helper-function L2))
         (if (not(number? (min-helper-function L1)))
             #f
             (min-helper-function L1))
-        (if (not(number? (min-helper-function L1)))
-            #f
-            (min-above-min-helper-class L1 L1)))
+       )
            
     ))
   
@@ -96,4 +97,8 @@
 
 
 (min-above-min '(20 a 100 30) '(a b c))
-(min-above-min '(9 a b c) '(20 a 100 30))
+(min-above-min '() '(a b c))
+(min-above-min '(20 a 100 30) '())
+;(min-above-min '(9 a b c) '(20 a 100 30))
+
+
